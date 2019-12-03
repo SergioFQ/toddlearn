@@ -68,6 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/change_personal_data_button" />
 
     <Button
+        android:onClick="decreaseTime"
         android:id="@+id/less_time_button"
         android:layout_width="76dp"
         android:layout_height="34dp"
@@ -84,6 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/limitTimeTextView" />
 
     <Button
+        android:onClick="increaseTime"
         android:id="@+id/more_time_button"
         android:layout_width="63dp"
         android:layout_height="44dp"
