@@ -9,21 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Game2Activity"></activity>
+        <activity android:name=".Game2Activity" />
         <activity android:name=".Game1Activity" />
         <activity android:name=".NewPasswordActivity" />
         <activity android:name=".DataChangeActivity" />
         <activity android:name=".ChildProgressActivity" />
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".SettingMenuActivity" />
-        <activity android:name=".GameSelectionActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".RegistrationActivity" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-    </application>
 
+        <activity android:name=".SettingMenuActivity" />
+
+        <activity android:name=".GameSelectionActivity" />
+
+        <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
 </manifest>

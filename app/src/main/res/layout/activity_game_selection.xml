@@ -4,6 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameSelectionActivity">
+    tools:context=".GameSelectionActivity"
+    android:background="@drawable/mainmenu_gradient_background">
+
+    <Button
+        android:id="@+id/game1_button"
+        android:layout_width="292dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="59dp"
+        android:background="@drawable/custom_button"
+        android:drawableTop="@drawable/arrow_game_icon"
+        app:layout_constraintBottom_toTopOf="@+id/game2_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45999998" />
+
+    <Button
+        android:id="@+id/game2_button"
+        android:layout_width="292dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="170dp"
+        android:background="@drawable/custom_button"
+        android:drawableTop="@drawable/color_game_icon"
+        app:layout_constraintBottom_toTopOf="@+id/return_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game1_button" />
+
+    <Button
+        android:id="@+id/return_button"
+        android:layout_width="70dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/return_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game2_button" />
+
+    <Button
+        android:id="@+id/todButton"
+        android:layout_width="162dp"
+        android:layout_height="173dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginLeft="236dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="61dp"
+        android:background="@drawable/todd_normal1"
+        app:layout_constraintBottom_toTopOf="@+id/game1_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
