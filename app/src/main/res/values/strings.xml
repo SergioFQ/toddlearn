@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Toddlearn</string>
+    <string name ="activity_register_title">REGISTRATION</string>
+    <string name= "email_title">Email</string>
+    <string name= "child_name_title">Child name</string>
+    <string name = "password_title">Password</string>
+    <string name = "confirm_password_title">Confirm password</string>
+    <string name = "agree_terms">I agree with the terms</string>
+    <string name = "register_title_button">Register </string>
+    <string name = "settings_title_button">Settings</string>
+    <string name = "activity_settings_title">SETTINGS</string>
+    <string name = "changed_title_button">Change personal data</string>
+    <string name = "limit_time_title">LIMIT TIME</string>
+    <string name = "time_default">15</string>
+    <string name="check_progress_title_button">Check kid progress</string>
 </resources>
