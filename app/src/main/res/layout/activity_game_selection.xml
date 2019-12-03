@@ -8,6 +8,7 @@
     android:background="@drawable/mainmenu_gradient_background">
 
     <Button
+        android:onClick="goToG1"
         android:id="@+id/game1_button"
         android:layout_width="292dp"
         android:layout_height="97dp"
@@ -26,6 +27,7 @@
         app:layout_constraintVertical_bias="0.45999998" />
 
     <Button
+        android:onClick="goToG2"
         android:id="@+id/game2_button"
         android:layout_width="292dp"
         android:layout_height="97dp"
@@ -43,6 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/game1_button" />
 
     <Button
+        android:onClick="goBack"
         android:id="@+id/return_button"
         android:layout_width="70dp"
         android:layout_height="71dp"
