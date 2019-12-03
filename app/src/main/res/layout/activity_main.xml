@@ -24,6 +24,7 @@
         app:srcCompat="@drawable/logo_app" />
 
     <Button
+        android:onClick="goToSelGame"
         android:id="@+id/play_button"
         android:layout_width="271dp"
         android:layout_height="273dp"
