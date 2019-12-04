@@ -13,4 +13,10 @@
     <string name = "limit_time_title">LIMIT TIME</string>
     <string name = "time_default">15</string>
     <string name="check_progress_title_button">Check kid progress</string>
+    <string name="progress_title">PROGRESS</string>
+    <string name="report_button_title">Send me a report</string>
+    <string name="average_time_title">AVERAGE PLAYING TIME</string>
+    <string name="game1_graph_title">GAME 1</string>
+    <string name="game2_graph_title">GAME 2</string>
+    <string name="advice_title">ADVICE</string>
 </resources>

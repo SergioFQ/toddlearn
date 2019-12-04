@@ -3,8 +3,11 @@
     <color name="colorBackground">#68BEF2</color>
     <color name ="Titles">#fff</color>
     <color name="colorSecondary">#0DF205</color>
+    <color name="colorSecondaryDark">#1D6B1B</color>
     <color name="color3">#F213E3</color>
+    <color name="color3dark">#8A1382</color>
     <color name="color4">#EAF205</color>
+    <color name="color4dark">#8A8322</color>
     <color name="colorBackgroundDark">#0332F3</color>
     <color name="colorButtons">#F25C05</color>
     <color name="colorButtonsLight">#FFAC04</color>
