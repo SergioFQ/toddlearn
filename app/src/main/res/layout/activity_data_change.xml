@@ -4,6 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataChangeActivity">
+    tools:context=".DataChangeActivity"
+    android:background="@drawable/gradient_background">
+
+    <TextView
+        android:id="@+id/changeDataTextView"
+        android:layout_width="346dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:background="@drawable/titles_background"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/data_change_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/email_change_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/email_change_input"
+        android:layout_width="345dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:ems="10"
+        android:hint="@string/email_title"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/childname_change_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeDataTextView" />
+
+    <EditText
+        android:id="@+id/childname_change_input"
+        android:layout_width="345dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:ems="10"
+        android:hint="@string/child_name_title"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/password_change_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_change_input" />
+
+    <Button
+        android:id="@+id/password_change_button"
+        android:layout_width="215dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="98dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginRight="98dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/password_title"
+        android:textColor="@color/Titles"
+        app:layout_constraintBottom_toTopOf="@+id/apply_changes_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/childname_change_input" />
+
+    <Button
+        android:id="@+id/apply_changes_button"
+        android:layout_width="146dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginLeft="236dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        android:layout_marginBottom="141dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/apply_title_button"
+        android:textColor="@color/Titles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_change_button" />
+
+    <Button
+        android:id="@+id/return_button_change_data"
+        android:layout_width="75dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="320dp"
+        android:layout_marginRight="320dp"
+        android:background="@drawable/return_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apply_changes_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
