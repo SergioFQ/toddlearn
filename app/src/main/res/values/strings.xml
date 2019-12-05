@@ -18,5 +18,10 @@
     <string name="average_time_title">AVERAGE PLAYING TIME</string>
     <string name="game1_graph_title">GAME 1</string>
     <string name="game2_graph_title">GAME 2</string>
-    <string name="advice_title">ADVICE</string>
+    <string name="data_change_title">CHANGE DATA</string>
+    <string name="password_title_button">Password</string>
+    <string name="apply_title_button">Apply changes</string>
+    <string name="change_password_title">CHANGE PASSWORD</string>
+    <string name ="current_password_title">Current password</string>
+    <string name="new_password_title">New password</string>
 </resources>
