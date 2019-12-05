@@ -42,6 +42,7 @@
         tools:shadowColor="@color/Titles" />
 
     <Button
+        android:onClick="showPopUp"
         android:id="@+id/settings_button"
         android:layout_width="187dp"
         android:layout_height="54dp"
