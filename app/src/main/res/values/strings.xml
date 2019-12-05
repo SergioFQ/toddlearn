@@ -24,4 +24,5 @@
     <string name="change_password_title">CHANGE PASSWORD</string>
     <string name ="current_password_title">Current password</string>
     <string name="new_password_title">New password</string>
+    <string name="login_arrow">➝</string>
 </resources>
