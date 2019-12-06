@@ -31,4 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void closePopUp(View view){ myDialog.dismiss(); }
 
+    public void goToRegister(View view) {
+        startActivity(new Intent(this,RegistrationActivity.class));
+    }
 }
