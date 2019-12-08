@@ -116,6 +116,7 @@
         app:layout_constraintTop_toBottomOf="@+id/confirm_pass_input" />
 
     <Button
+        android:onClick="saveRegistration"
         android:id="@+id/register_button"
         android:layout_width="146dp"
         android:layout_height="41dp"
