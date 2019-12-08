@@ -1,20 +1,38 @@
 package com.g12.toddlearn;
 
 import androidx.appcompat.app.AppCompatActivity;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.g12.toddlearn.app.ChildsDB;
+import com.g12.toddlearn.app.UsersDB;
 
 public class MainActivity extends AppCompatActivity {
-    Dialog myDialog; //for the pop-up
+    private Dialog myDialog; //for the pop-up
+    private Realm realm;
+    private TextView email;
+    private TextView password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDialog = new Dialog(this);
+
+        realm = Realm.getDefaultInstance();
+
+
+
+
+
     }
 
     public void goToSelGame(View view) {
@@ -33,5 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToRegister(View view) {
         startActivity(new Intent(this,RegistrationActivity.class));
+    }
+
+    public void enterSettings(View view){
+        final RealmResults<UsersDB> users = realm.where(UsersDB.class).findAll();
+        final RealmResults<ChildsDB> childs = realm.where(ChildsDB.class).findAll();
+
+
+
     }
 }
