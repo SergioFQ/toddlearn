@@ -59,6 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/childProgressTextView" />
 
     <Button
+        android:onClick="sendReport"
         android:id="@+id/report_button"
         android:layout_width="111dp"
         android:layout_height="53dp"
