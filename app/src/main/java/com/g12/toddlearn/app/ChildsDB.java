@@ -2,6 +2,10 @@ package com.g12.toddlearn.app;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+<<<<<<< HEAD
+=======
+import io.realm.annotations.Required;
+>>>>>>> origin/master
 
 public class ChildsDB extends RealmObject {
     @PrimaryKey
@@ -24,7 +28,13 @@ public class ChildsDB extends RealmObject {
         return id;
     }
 
+<<<<<<< HEAD
     public void setId(long id){ this.id = id; }
+=======
+    public void setId(long id) {
+        this.id = id;
+    }
+>>>>>>> origin/master
 
     public String getName() {
         return name;
