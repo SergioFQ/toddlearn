@@ -23,7 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText password;
     private EditText confirmPassword;
     private CheckBox agreeTerms;
-    private Realm realm;
+    private Realm DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.confirm_pass_input);
         agreeTerms = findViewById(R.id.agree_terms_checkbox);
 
-        realm = Realm.getDefaultInstance();
+        DB = Realm.getDefaultInstance();
 
 
     }
@@ -51,15 +51,16 @@ public class RegistrationActivity extends AppCompatActivity {
             if (passwordString.equals(confirmPasswordString)) {
                 if (agreeTerms.isChecked()) {
 
-                    realm.executeTransaction(new Realm.Transaction() {
+                    DB.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
                                 UsersDB newUser = new UsersDB(emailString, passwordString);
                                 ChildsDB newChild = new ChildsDB(childNameString);
                                 newUser.setChild(newChild);
 
-                                realm.copyToRealmOrUpdate(newUser);
-                                realm.copyToRealmOrUpdate(newChild);
+                                realm.copyToRealm(newUser);
+                                realm.copyToRealm(newChild);
+
                         }
                     });
 
