@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 
 public class ChildProgressActivity extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class ChildProgressActivity extends AppCompatActivity {
     }
 
     public void sendReport(View view) {
-
+    try {
         BackgroundMail.newBuilder(this)
                 .withUsername("todd.learning.7@gmail.com")
 
@@ -41,5 +42,15 @@ public class ChildProgressActivity extends AppCompatActivity {
                     }
                 })
                 .send();
+                .withType(BackgroundMail.TYPE_HTML)
+                .withSubject("this is the subject")
+                .withBody("<h1>Report of your Child</h1><p>a message<p/>")
+                .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {public void onSuccess() { }}).send();
+    }
+    catch (Exception e)
+    {
+        System.out.println(e.getMessage());
+        Toast.makeText(this, "Error sending the email", Toast.LENGTH_SHORT);
+    }
     }
 }
