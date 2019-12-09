@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
     }
 
     public void goToSelGame(View view) {

@@ -20,11 +20,19 @@
         <activity android:name=".SettingMenuActivity" />
         <activity android:name=".GameSelectionActivity" />
         <activity android:name=".MainActivity" >
+<<<<<<< HEAD
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+=======
+         <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+>>>>>>> Registration problem fixed
         </activity>
 
         <meta-data

@@ -2,6 +2,10 @@ package com.g12.toddlearn.app;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+<<<<<<< HEAD
+=======
+
+>>>>>>> Registration problem fixed
 
 public class ChildsDB extends RealmObject {
     @PrimaryKey
@@ -25,6 +29,11 @@ public class ChildsDB extends RealmObject {
     }
 
     public void setId(long id){ this.id = id; }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Registration problem fixed
 
     public String getName() {
         return name;
