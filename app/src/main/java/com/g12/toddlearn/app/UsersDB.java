@@ -2,11 +2,10 @@ package com.g12.toddlearn.app;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.Required;
-
 public class UsersDB extends RealmObject {
     @PrimaryKey
     private long id;
+
     private String email;
     private ChildsDB child;
     private int maxTime;
@@ -40,8 +39,8 @@ public class UsersDB extends RealmObject {
         return child;
     }
 
-    public void setChild(ChildsDB childName) {
-        this.child = childName;
+    public void setChild(ChildsDB child) {
+        this.child = child;
     }
 
     public int getMaxTime() {
