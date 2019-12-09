@@ -29,19 +29,7 @@ public class ChildProgressActivity extends AppCompatActivity {
                 .withType(BackgroundMail.TYPE_PLAIN)
                 .withSubject("this is the subject")
                 .withBody("this is the body")
-                .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
-                    @Override
-                    public void onSuccess() {
-                        //do some magic
-                    }
-                })
-                .withOnFailCallback(new BackgroundMail.OnFailCallback() {
-                    @Override
-                    public void onFail() {
-                        //do some magic
-                    }
-                })
-                .send();
+                .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {public void onSuccess() { }}).send();
     }
     catch (Exception e)
     {
