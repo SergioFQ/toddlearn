@@ -14,18 +14,18 @@
         <activity android:name=".Game1Activity" />
         <activity android:name=".NewPasswordActivity" />
         <activity android:name=".DataChangeActivity" />
-        <activity android:name=".ChildProgressActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".ChildProgressActivity" />
         <activity android:name=".RegistrationActivity" />
 
         <activity android:name=".SettingMenuActivity" />
         <activity android:name=".GameSelectionActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

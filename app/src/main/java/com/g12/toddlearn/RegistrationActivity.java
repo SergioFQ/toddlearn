@@ -58,8 +58,8 @@ public class RegistrationActivity extends AppCompatActivity {
                                 ChildsDB newChild = new ChildsDB(childNameString);
                                 newUser.setChild(newChild);
 
-                                realm.copyToRealm(newUser);
-                                realm.copyToRealm(newChild);
+                                realm.copyToRealmOrUpdate(newUser);
+                                realm.copyToRealmOrUpdate(newChild);
 
                         }
                     });

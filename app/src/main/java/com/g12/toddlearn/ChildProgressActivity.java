@@ -26,22 +26,6 @@ public class ChildProgressActivity extends AppCompatActivity {
 
                 .withPassword("toddlearn1234")
                 .withMailto("todd.learning.7@gmail.com")
-                .withType(BackgroundMail.TYPE_PLAIN)
-                .withSubject("this is the subject")
-                .withBody("this is the body")
-                .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
-                    @Override
-                    public void onSuccess() {
-                        //do some magic
-                    }
-                })
-                .withOnFailCallback(new BackgroundMail.OnFailCallback() {
-                    @Override
-                    public void onFail() {
-                        //do some magic
-                    }
-                })
-                .send();
                 .withType(BackgroundMail.TYPE_HTML)
                 .withSubject("this is the subject")
                 .withBody("<h1>Report of your Child</h1><p>a message<p/>")
