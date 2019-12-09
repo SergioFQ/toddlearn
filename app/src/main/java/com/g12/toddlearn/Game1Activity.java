@@ -14,7 +14,7 @@ public class Game1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
-        ImageView image = (ImageView) findViewById(R.id.signal_left);
+        ImageView image = (ImageView) findViewById(R.id.signalImageView);
         //while (tiempo de juego < currentTime)
         //{
         while (true)
