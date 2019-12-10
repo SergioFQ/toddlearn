@@ -7,6 +7,18 @@
     tools:context=".Game2Activity"
     android:background="@drawable/game_2_background">
 
+    <ImageView
+        android:id="@+id/todImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="255dp"
+        android:layout_marginLeft="255dp"
+        android:layout_marginBottom="580dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/todd_normal1" />
     <RelativeLayout
         android:id="@+id/layoutGame2"
         android:layout_width="400dp"
@@ -74,6 +86,7 @@
             android:layout_marginTop="550dp"
             android:layout_marginLeft="272dp"
             app:srcCompat="@drawable/red_box" />
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

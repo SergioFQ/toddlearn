@@ -29,7 +29,7 @@ public class Game2Activity extends AppCompatActivity {
     private UsersDB currentUser;
 
 
-    ImageView ImageObj1,ImageObj2,ImageObj3,ImageObj4,ImageObj5,ImageBoxBlue,ImageBoxYellow,ImageBoxRed;
+    ImageView ImageObj1,ImageObj2,ImageObj3,ImageObj4,ImageObj5,ImageBoxBlue,ImageBoxYellow,ImageBoxRed,ImageTod;
 
      Integer[] imagesBlue={
              R.drawable.ball_blue,
@@ -131,6 +131,7 @@ public class Game2Activity extends AppCompatActivity {
             View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
             v.startDrag(data,myShadowBuilder,v,0);
             objUsing=v;
+            ImageTod.setImageResource(R.drawable.todd_normal1);
             objUsing.setVisibility(View.GONE);
             return true;
         }
@@ -155,15 +156,22 @@ public class Game2Activity extends AppCompatActivity {
                     if((v.getId()==ImageBoxBlue.getId()) &&((int)objUsing.getTag()==0)){
                         objUsing.setVisibility(View.GONE);
                         contDone++;
+                        ImageTod.setImageResource(R.drawable.todd_wee);
                     }else if((v.getId()==ImageBoxYellow.getId())&&((int)objUsing.getTag()==1)){
                         contDone++;
                         objUsing.setVisibility(View.GONE);
+                        ImageTod.setImageResource(R.drawable.todd_wee);
 
                     }else if((v.getId()==ImageBoxRed.getId())&&((int)objUsing.getTag()==2)){
                         contDone++;
                         objUsing.setVisibility(View.GONE);
+                        ImageTod.setImageResource(R.drawable.todd_wee);
+                    }else if(v.getId()==gameZone.getId()){
+                        objUsing.setVisibility(View.VISIBLE);
+                        ImageTod.setImageResource(R.drawable.todd_normal1);
                     }else{
                         objUsing.setVisibility(View.VISIBLE);
+                        ImageTod.setImageResource(R.drawable.todd_error);
                     }
 
                     break;
@@ -185,6 +193,8 @@ public class Game2Activity extends AppCompatActivity {
         ImageBoxBlue = (ImageView) findViewById(R.id.imageView_blueBox);
         ImageBoxYellow = (ImageView) findViewById(R.id.imageView_yellowBox);
         ImageBoxRed = (ImageView) findViewById(R.id.imageView_redBox);
+
+        ImageTod = (ImageView) findViewById(R.id.todImage);
     }
 
     public void imageGeneration(ImageView[] objGame){
