@@ -7,4 +7,13 @@
     tools:context=".Game1Activity"
     android:background="@drawable/game1_background">
 
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="183dp"
+        android:layout_height="187dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titles_background" />
 </androidx.constraintlayout.widget.ConstraintLayout>
