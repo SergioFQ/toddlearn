@@ -21,6 +21,7 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
     SensorManager sensorManager;
     Sensor accelerometer;
     ImageView image;
+    float xValue;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -51,16 +52,34 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
                     Log.d("Game1Activity", "der");
                     image.setImageResource(R.drawable.signal_right);
                 }
-                new Handler().postDelayed(this, 3000);
+
+                try {
+                    this.wait(2000000000); // 2 second
+                boolean ok = false;
+                while (ok == false) {
+                    if (xValue > 5 && randomInt == 0) {
+                        image.setImageResource(R.drawable.bear_blue);
+                        ok = true;
+                    }
+                    if (xValue < -5 && randomInt == 1) {
+                        image.setImageResource(R.drawable.bear_blue);
+                        ok = true;
+                    }
+                }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                new Handler().postDelayed(this, 5000);
             }
-        }, 3000);
+        }, 5000);
     }
     public void onAccuracyChanged(Sensor sensor, int i){
 
     }
     public void onSensorChanged(SensorEvent sensorEvent)
     {
-//        Log.d("Game1Activity","onSensorChanged X:" + sensorEvent.values[0] + " Y: " + sensorEvent.values[1] + " Z: " + sensorEvent.values[2]);
+            xValue = sensorEvent.values[0];
+        Log.d("Game1Activity","onSensorChanged X:" + sensorEvent.values[0] + " Y: " + sensorEvent.values[1] + " Z: " + sensorEvent.values[2]);
 //        final Handler handler = new Handler();
 //        int updateInterval = 3000;
 //
