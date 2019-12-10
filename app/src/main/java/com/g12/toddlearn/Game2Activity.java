@@ -3,6 +3,7 @@ package com.g12.toddlearn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.DragEvent;
@@ -10,13 +11,22 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import com.g12.toddlearn.app.ChildsDB;
+import com.g12.toddlearn.app.UsersDB;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import io.realm.Realm;
 
 import static java.lang.String.valueOf;
 
 public class Game2Activity extends AppCompatActivity {
+    private Realm DB;
+    private ChildsDB currentChild;
+    private UsersDB currentUser;
 
 
     ImageView ImageObj1,ImageObj2,ImageObj3,ImageObj4,ImageObj5,ImageBoxBlue,ImageBoxYellow,ImageBoxRed;
@@ -41,13 +51,23 @@ public class Game2Activity extends AppCompatActivity {
     };
     RelativeLayout gameZone;
     ImageView[] objGame;
-    int contDone;
 
+    int contDone;
+    View objUsing;
+    Timer timer;
     Random r;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2);
+
+        Bundle extras = getIntent().getExtras();
+        long userID = extras.getLong("userID");
+
+        DB = Realm.getDefaultInstance();
+
+        currentUser = DB.where(UsersDB.class).equalTo("id", userID).findFirst();
+        currentChild = currentUser.getChild();
 
         layoutDefinition();//connect the ImageView with the xml ImageViews
 
@@ -62,6 +82,27 @@ public class Game2Activity extends AppCompatActivity {
         contDone=0;
         r = new Random();
         startGame();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        timer = new Timer();
+        final long startTime = System.currentTimeMillis();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                long finalTime = System.currentTimeMillis();
+                Intent i =
+                        new Intent (Game2Activity.this, MainActivity.class);
+                i.putExtra("startTimeGame2", startTime);
+                i.putExtra("finalTimeGame2", finalTime);
+                i.putExtra("userID", currentUser.getId());
+                startActivity(i);
+                finish();
+            }
+        },currentUser.getMaxTime()*60000);
     }
 
     private void startGame() {
@@ -89,7 +130,8 @@ public class Game2Activity extends AppCompatActivity {
             ClipData data = ClipData.newPlainText("","");
             View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
             v.startDrag(data,myShadowBuilder,v,0);
-            v.setVisibility(View.INVISIBLE);
+            objUsing=v;
+            objUsing.setVisibility(View.GONE);
             return true;
         }
     };
@@ -99,10 +141,10 @@ public class Game2Activity extends AppCompatActivity {
         public boolean onDrag(View v, DragEvent event) {
             int dragEvent = event.getAction();
             final View dragObject = (View) event.getLocalState();
-            int tagAux=-1;
-            if(dragObject!=null){tagAux=(int)dragObject.getTag();}
+
             switch (dragEvent) {
                 case DragEvent.ACTION_DRAG_STARTED:
+
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
@@ -110,20 +152,24 @@ public class Game2Activity extends AppCompatActivity {
                     break;
                 case DragEvent.ACTION_DROP:
 
-                    if((v.getId()==ImageBoxBlue.getId()) &&(tagAux==0)){
-                        dragObject.setVisibility(View.INVISIBLE);
+                    if((v.getId()==ImageBoxBlue.getId()) &&((int)objUsing.getTag()==0)){
+                        objUsing.setVisibility(View.GONE);
                         contDone++;
-                    }else if((v.getId()==ImageBoxYellow.getId())&&(tagAux==1)){
+                    }else if((v.getId()==ImageBoxYellow.getId())&&((int)objUsing.getTag()==1)){
                         contDone++;
-                    }else if((v.getId()==ImageBoxRed.getId())&&(tagAux==2)){
+                        objUsing.setVisibility(View.GONE);
+
+                    }else if((v.getId()==ImageBoxRed.getId())&&((int)objUsing.getTag()==2)){
                         contDone++;
+                        objUsing.setVisibility(View.GONE);
                     }else{
-                        dragObject.setVisibility(View.VISIBLE);
+                        objUsing.setVisibility(View.VISIBLE);
                     }
 
                     break;
 
             }
+
             checkStateGame();
             return true;
         }

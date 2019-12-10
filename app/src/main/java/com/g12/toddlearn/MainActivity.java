@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.g12.toddlearn.app.ChildsDB;
 import com.g12.toddlearn.app.UsersDB;
 
 import java.util.regex.Matcher;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView password;
     private RealmResults<UsersDB> userList;
     private UsersDB currentUser;
+    private ChildsDB currentChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,40 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+
+            long startTimeGame2 = extras.getLong("startTimeGame2");
+            long finalTimeGame2 = extras.getLong("finalTimeGame2");
+            long userID = extras.getLong("userID");
+
+            updateGame2Time(startTimeGame2, finalTimeGame2, userID);
+        }
 
     }
+
+    private void updateGame2Time(long startTimeGame2, long finalTimeGame2, final long userID) {
+        final long totalTimeGame2 = startTimeGame2 - finalTimeGame2;
+        DB.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                currentUser = DB.where(UsersDB.class).equalTo("id", userID).findFirst();
+                currentChild = currentUser.getChild();
+                currentChild.setTimeGame2(currentChild.getTimeGame2() + totalTimeGame2);
+                currentChild.setTimeBoth(currentChild.getTimeBoth() + totalTimeGame2);
+
+                realm.copyToRealmOrUpdate(currentChild);
+            }
+        });
+
+        Log.i("USER UPDATED", currentUser.toString());
+    }
+
 
     public void goToSelGame(View view) {
         myDialogGames.setContentView(R.layout.login_pop_up_play);
@@ -128,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                     if(checkPassword) {
                         Intent i = new Intent(MainActivity.this, GameSelectionActivity.class);
                         currentUser = u;
-                        i.putExtra("childID", currentUser.getChild().getId());
+                        i.putExtra("userID", currentUser.getId());
                         startActivity(i);
                         myDialogGames.dismiss();
                     } else {
