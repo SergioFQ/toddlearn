@@ -24,6 +24,8 @@ public class ChildProgressActivity extends AppCompatActivity {
     private UsersDB currentUser;
     private ChildsDB currentChild;
     private TextView childName;
+    private long totalTimeGame1;
+    private long totalTimeGame2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class ChildProgressActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         long userID = extras.getLong("userID");
+        totalTimeGame1 = extras.getLong("totalTimeGame1")/60000;
+        totalTimeGame2 = extras.getLong("totalTimeGame2")/60000;
 
         childName = findViewById(R.id.childNameTextView);
         BarChart chartTotalTime = findViewById(R.id.barChar_playingTime);
@@ -88,9 +92,10 @@ public class ChildProgressActivity extends AppCompatActivity {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
 
         barEntries.add(new BarEntry(1, currentChild.getTimeGame2()));
-        barEntries.add(new BarEntry(2, 30));
+        barEntries.add(new BarEntry(2, totalTimeGame2));
         barEntries.add(new BarEntry(3, 15));
-        barEntries.add(new BarEntry(4, 5));
+        barEntries.add(new BarEntry(4, 20));
+        barEntries.add(new BarEntry(5, 5));
 
         BarDataSet dataSet = new BarDataSet(barEntries, "game 2 times");
         dataSet.setColors(ColorTemplate.LIBERTY_COLORS);
@@ -104,9 +109,10 @@ public class ChildProgressActivity extends AppCompatActivity {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
 
         barEntries.add(new BarEntry(1, currentChild.getTimeGame1()));
-        barEntries.add(new BarEntry(2, 5));
+        barEntries.add(new BarEntry(2, totalTimeGame1));
         barEntries.add(new BarEntry(3, 15));
-        barEntries.add(new BarEntry(4, 20));
+        barEntries.add(new BarEntry(4, 10));
+        barEntries.add(new BarEntry(5, 5));
 
         BarDataSet dataSet = new BarDataSet(barEntries, "game 1 times");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
@@ -146,8 +152,15 @@ public class ChildProgressActivity extends AppCompatActivity {
                 .withPassword("toddlearn1234")
                 .withMailto(currentUser.getEmail())
                 .withType(BackgroundMail.TYPE_HTML)
-                .withSubject("this is the subject")
-                .withBody("<h1>Report of your Child</h1><p>a message<p/>")
+                .withSubject("Report about your child progress")
+                .withBody("<h1>"+currentChild.getName()+"'s Report</h1><p><i>current progress</i><p/>"+
+                        "<p><b>- Total time played: <b/>"+
+                        String.valueOf(totalTimeGame1+totalTimeGame2)+"<p/>"+
+                        "<p><b>- Total time played game 1: <b/>"
+                        + String.valueOf(totalTimeGame1)+"<p/>"+
+                        "<p><b>- Total time played game2: <b/>"+String.valueOf(totalTimeGame2)+"<p/>" +
+                        "<a href=\"https://ibb.co/kBKpCHk\"><img src=\"https://i.ibb.co/bm1x9Wq/logo-app.png\" " +
+                        "alt=\"logo-app\" border=\"0\"></a>")
                 .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {public void onSuccess() { }}).send();
     }
     catch (Exception e)

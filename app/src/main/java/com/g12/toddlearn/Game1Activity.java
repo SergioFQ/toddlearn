@@ -78,8 +78,9 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
             @Override
             public void run() {
                 long finalTime = System.currentTimeMillis();
-                final long totalTime = startTime - finalTime;
-                DB.executeTransaction(new Realm.Transaction() {
+                final long totalTime = startTime + finalTime;
+                /*DB.executeTransaction(new Realm.Transaction() {
+
                     @Override
                     public void execute(Realm realm) {
                         currentChild.setTimeGame2(totalTime);
