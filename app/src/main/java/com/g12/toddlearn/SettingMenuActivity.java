@@ -54,7 +54,7 @@ public class SettingMenuActivity extends AppCompatActivity {
 
     public void goToChildProgress(View view) {
         Intent i = new Intent(this,ChildProgressActivity.class);
-        i.putExtra("childID", currentUser.getChild().getId());
+        i.putExtra("userID", currentUser.getId());
         startActivity(i);
     }
 
