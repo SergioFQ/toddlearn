@@ -75,7 +75,7 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
             @Override
             public void run() {
                 long finalTime = System.currentTimeMillis();
-                final long totalTime = startTime - finalTime;
+                final long totalTime = startTime + finalTime;
                 /*DB.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
@@ -89,7 +89,7 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
                 startActivity(i);
                 finish();
             }
-        },/*currentUser.getMaxTime()*60000*/ 30000);
+        },currentUser.getMaxTime()*60000);
     }
 
 

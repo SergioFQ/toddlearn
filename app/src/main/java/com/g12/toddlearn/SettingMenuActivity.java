@@ -17,6 +17,8 @@ public class SettingMenuActivity extends AppCompatActivity {
     private TextView limitTime;
     private Realm DB;
     private UsersDB currentUser;
+    private long totalTimeGame1;
+    private long totalTimeGame2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,8 @@ public class SettingMenuActivity extends AppCompatActivity {
          //to get the information from the past activity
          Bundle extras = getIntent().getExtras();
          long userID = extras.getLong("userID");
+         totalTimeGame1 = extras.getLong("totalTimeGame1");
+         totalTimeGame2 = extras.getLong("totalTimeGame2");
 
 
          DB = Realm.getDefaultInstance();
@@ -55,6 +59,8 @@ public class SettingMenuActivity extends AppCompatActivity {
     public void goToChildProgress(View view) {
         Intent i = new Intent(this,ChildProgressActivity.class);
         i.putExtra("userID", currentUser.getId());
+        i.putExtra("totalTimeGame1", totalTimeGame1);
+        i.putExtra("totalTimeGame2", totalTimeGame2);
         startActivity(i);
     }
 

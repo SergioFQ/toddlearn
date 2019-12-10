@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private RealmResults<UsersDB> userList;
     private UsersDB currentUser;
     private ChildsDB currentChild;
+    private long totalTimeGame1;
+    private long totalTimeGame2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,15 @@ public class MainActivity extends AppCompatActivity {
             Log.i("DB", u.toString());
         }
 
-    }
+        Bundle extras = getIntent().getExtras();
 
+        if(extras != null){
+            totalTimeGame1 = extras.getLong("totalTimeGame1");
+            totalTimeGame2 = extras.getLong("totalTimeGame2");
+
+        }
+
+    }
 
 
 
@@ -99,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
                         Intent i = new Intent(MainActivity.this, SettingMenuActivity.class);
                         currentUser = u;
                         i.putExtra("userID", currentUser.getId());
+                        i.putExtra("totalTimeGame1", totalTimeGame1);
+                        i.putExtra("totalTimeGame2", totalTimeGame2);
                         startActivity(i);
                         myDialog.dismiss();
                     } else {
