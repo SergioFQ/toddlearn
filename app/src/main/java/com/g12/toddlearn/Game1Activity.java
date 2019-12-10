@@ -24,15 +24,16 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
     ImageView image;
     float xValue;
     Vibrator v;
-    int randomInt;
+    int randomInt = 0;
     boolean goBack = true;
     Random randomGenerator = new Random();
+    boolean firstTime = true;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
-        image = (ImageView) findViewById(R.id.arrow);
+        image = (ImageView) findViewById(R.id.signal_left);
         Log.d("Game1Activity","accelerometer start");
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -52,33 +53,37 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
         xValue = sensorEvent.values[0];
         if (xValue > 5 && randomInt == 0 && goBack == true)
         {
-            image.setImageResource(R.drawable.bear_blue);
+            image.setImageResource(R.drawable.todd_wee);
             Log.d("Game1Activity", "IZQUIERDA");
             v.vibrate(500);
             goBack = false;
+            firstTime = false;
         }
         if (xValue < -5 && randomInt == 1 && goBack == true)
         {
-            image.setImageResource(R.drawable.bear_blue);
+            image.setImageResource(R.drawable.todd_wee);
             Log.d("Game1Activity", "DERECHA");
             v.vibrate(500);
             goBack = false;
+            firstTime = false;
         }
         if (xValue < 2 && xValue > -2 && goBack == false)
         {
-            randomInt = randomGenerator.nextInt(2);
-            if (randomInt == 0) //izq
+            if (firstTime == false)
             {
-                Log.d("Game1Activity", "flecha izq");
-                image.setImageResource(R.drawable.signal_left);
+                randomInt = randomGenerator.nextInt(2);
+                if (randomInt == 0) //izq
+                {
+                    Log.d("Game1Activity", "flecha izq");
+                    image.setImageResource(R.drawable.signal_left);
+                }
+                if (randomInt == 1) //der
+                {
+                    Log.d("Game1Activity", "flecha der");
+                    image.setImageResource(R.drawable.signal_right);
+                }
+                goBack = true;
             }
-            if (randomInt == 1) //der
-            {
-                Log.d("Game1Activity", "flecha der");
-                image.setImageResource(R.drawable.signal_right);
-            }
-            xValue = sensorEvent.values[0];
-            goBack = true;
         }
     }
 
