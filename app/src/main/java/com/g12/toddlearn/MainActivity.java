@@ -125,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(myDialog.getContext(), "Please, fill the gaps",
                     Toast.LENGTH_LONG).show();
         }
+
+        Toast.makeText(myDialog.getContext(), "Please, register",
+                Toast.LENGTH_LONG).show();
     }
 
     public void closePopUpPlay(View view) {
@@ -158,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(myDialogGames.getContext(), "Please, fill the gaps",
                     Toast.LENGTH_LONG).show();
         }
-
+            Toast.makeText(myDialogGames.getContext(), "Please, register",
+                Toast.LENGTH_LONG).show();
     }
 }
 
