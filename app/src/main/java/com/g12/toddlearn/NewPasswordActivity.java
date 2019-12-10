@@ -59,6 +59,9 @@ public class NewPasswordActivity extends AppCompatActivity {
                         realm.copyToRealmOrUpdate(currentUser);
                     }
                 });
+
+                Toast.makeText(getApplicationContext(), "Password changed correctly",
+                        Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(getApplicationContext(),
                         " The new password doesn't match the confirmation",
