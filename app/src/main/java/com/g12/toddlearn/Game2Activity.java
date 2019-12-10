@@ -99,7 +99,8 @@ public class Game2Activity extends AppCompatActivity {
         public boolean onDrag(View v, DragEvent event) {
             int dragEvent = event.getAction();
             final View dragObject = (View) event.getLocalState();
-            int tagAux=(int)dragObject.getTag();
+            int tagAux=-1;
+            if(dragObject!=null){tagAux=(int)dragObject.getTag();}
             switch (dragEvent) {
                 case DragEvent.ACTION_DRAG_STARTED:
                     break;
