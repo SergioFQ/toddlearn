@@ -84,6 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/childname_change_input" />
 
     <Button
+        android:onClick="setChanges"
         android:id="@+id/apply_changes_button"
         android:layout_width="146dp"
         android:layout_height="57dp"

@@ -7,4 +7,73 @@
     tools:context=".Game2Activity"
     android:background="@drawable/game_2_background">
 
+    <RelativeLayout
+        android:id="@+id/layoutGame2"
+        android:layout_width="400dp"
+        android:layout_height="700dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/dragObject1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="150dp"/>
+        <ImageView
+            android:id="@+id/dragObject2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="245dp"
+            android:layout_marginTop="150dp"/>
+        <ImageView
+            android:id="@+id/dragObject3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="250dp"/>
+        <ImageView
+            android:id="@+id/dragObject4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="350dp"/>
+        <ImageView
+            android:id="@+id/dragObject5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="245dp"
+            android:layout_marginTop="350dp"/>
+
+
+        <ImageView
+            android:id="@+id/imageView_blueBox"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="550dp"
+            android:layout_marginLeft="12dp"
+            app:srcCompat="@drawable/blue_box" />
+
+        <ImageView
+        android:id="@+id/imageView_yellowBox"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginLeft="142dp"
+        app:srcCompat="@drawable/yellow_box" />
+
+        <ImageView
+            android:id="@+id/imageView_redBox"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="550dp"
+            android:layout_marginLeft="272dp"
+            app:srcCompat="@drawable/red_box" />
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
