@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ClipData;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -57,7 +58,7 @@ public class Game2Activity extends AppCompatActivity {
         r = new Random();
         imageGeneration(objGame);
         for(int i=0;i<5;i++){
-            objGame[i].setOnLongClickListener(longClickListener);
+            objGame[i].setOnTouchListener(touchListener);
         }
 
         ImageBoxBlue.setOnDragListener(dragListener);
@@ -65,12 +66,13 @@ public class Game2Activity extends AppCompatActivity {
         ImageBoxRed.setOnDragListener(dragListener);
     }
 
-    View.OnLongClickListener longClickListener = new View.OnLongClickListener(){
+    View.OnTouchListener touchListener = new View.OnTouchListener() {
         @Override
-        public boolean onLongClick(View v) {
+        public boolean onTouch(View v, MotionEvent event) {
             ClipData data = ClipData.newPlainText("","");
             View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
             v.startDrag(data,myShadowBuilder,v,0);
+            v.setVisibility(View.INVISIBLE);
             return true;
         }
     };
@@ -96,6 +98,8 @@ public class Game2Activity extends AppCompatActivity {
                     }
 
                     break;
+                    case DragEvent.ACTION_DRAG_ENDED:
+                        dragObject.setVisibility(View.VISIBLE);
             }
             return true;
         }
