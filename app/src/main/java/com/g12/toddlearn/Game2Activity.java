@@ -42,6 +42,7 @@ public class Game2Activity extends AppCompatActivity {
     RelativeLayout gameZone;
     ImageView[] objGame;
     int contDone;
+    View objUsing;
 
     Random r;
     @Override
@@ -89,7 +90,8 @@ public class Game2Activity extends AppCompatActivity {
             ClipData data = ClipData.newPlainText("","");
             View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
             v.startDrag(data,myShadowBuilder,v,0);
-            v.setVisibility(View.INVISIBLE);
+            objUsing=v;
+            objUsing.setVisibility(View.GONE);
             return true;
         }
     };
@@ -99,10 +101,10 @@ public class Game2Activity extends AppCompatActivity {
         public boolean onDrag(View v, DragEvent event) {
             int dragEvent = event.getAction();
             final View dragObject = (View) event.getLocalState();
-            int tagAux=-1;
-            if(dragObject!=null){tagAux=(int)dragObject.getTag();}
+
             switch (dragEvent) {
                 case DragEvent.ACTION_DRAG_STARTED:
+
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
@@ -110,20 +112,24 @@ public class Game2Activity extends AppCompatActivity {
                     break;
                 case DragEvent.ACTION_DROP:
 
-                    if((v.getId()==ImageBoxBlue.getId()) &&(tagAux==0)){
-                        dragObject.setVisibility(View.INVISIBLE);
+                    if((v.getId()==ImageBoxBlue.getId()) &&((int)objUsing.getTag()==0)){
+                        objUsing.setVisibility(View.GONE);
                         contDone++;
-                    }else if((v.getId()==ImageBoxYellow.getId())&&(tagAux==1)){
+                    }else if((v.getId()==ImageBoxYellow.getId())&&((int)objUsing.getTag()==1)){
                         contDone++;
-                    }else if((v.getId()==ImageBoxRed.getId())&&(tagAux==2)){
+                        objUsing.setVisibility(View.GONE);
+
+                    }else if((v.getId()==ImageBoxRed.getId())&&((int)objUsing.getTag()==2)){
                         contDone++;
+                        objUsing.setVisibility(View.GONE);
                     }else{
-                        dragObject.setVisibility(View.VISIBLE);
+                        objUsing.setVisibility(View.VISIBLE);
                     }
 
                     break;
 
             }
+
             checkStateGame();
             return true;
         }
