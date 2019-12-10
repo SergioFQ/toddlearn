@@ -87,7 +87,7 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
 
                         realm.copyToRealmOrUpdate(currentChild);
                     }
-                });
+                });*/
                 Intent i = new Intent (Game1Activity.this, MainActivity.class);
                 i.putExtra("totalTimeGame1", totalTime);
                 startActivity(i);
