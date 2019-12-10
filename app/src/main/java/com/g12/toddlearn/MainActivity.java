@@ -18,7 +18,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-    private Dialog myDialog; //for the pop-up
+    private Dialog myDialog; //for the pop-up settings
+    private Dialog myDialogGames; //for the pop-up register
     private Realm DB;
     private TextView email;
     private TextView password;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDialog = new Dialog(this);
+        myDialogGames = new Dialog(this);
 
         //for the db, you have to do it in every activity that has some relationship with the DB.
         DB = Realm.getDefaultInstance();
@@ -46,20 +48,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToSelGame(View view) {
-        Intent i= new Intent(this,GameSelectionActivity.class);
-
-        if(currentUser != null) {
-            i.putExtra("childID", currentUser.getChild().getId());
-        } else{
-            UsersDB defaultUser = null;
-            for(UsersDB u: userList){
-                defaultUser = u;
-                break;
-            }
-            i.putExtra("childID", defaultUser.getChild().getId());
-        }
-
-        startActivity(i);
+        myDialogGames.setContentView(R.layout.login_pop_up_play);
+        myDialogGames.show();
     }
 
     public void showPopUp(View view){
@@ -68,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         myDialog.show();
     }
 
-    public void closePopUp(View view){ myDialog.dismiss(); }
+    public void closePopUpSettings(View view){ myDialog.dismiss(); }
 
     public void goToRegister(View view) {
         startActivity(new Intent(this,RegistrationActivity.class));
@@ -121,6 +111,42 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(myDialog.getContext(), "Please, fill the gaps",
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void closePopUpPlay(View view) {
+        myDialogGames.dismiss();
+    }
+
+    public void enterGameSelection(View view) {
+        email = myDialogGames.findViewById(R.id.email_input_login_games);
+        password = myDialogGames.findViewById(R.id.password_input_login_games);
+
+
+        if (!email.getText().toString().isEmpty() & !password.getText().toString().isEmpty()) {
+            for (UsersDB u : userList) {
+                boolean checkEmail =  emailsEquals(u.getEmail(), email.getText().toString());
+                boolean checkPassword = u.getPassword().equals(password.getText().toString());
+                if (checkEmail) {
+                    if(checkPassword) {
+                        Intent i = new Intent(MainActivity.this, GameSelectionActivity.class);
+                        currentUser = u;
+                        i.putExtra("childID", currentUser.getChild().getId());
+                        startActivity(i);
+                        myDialogGames.dismiss();
+                    } else {
+                        Toast.makeText(myDialogGames.getContext(), "Wrong password",
+                                Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(myDialogGames.getContext(), "Wrong email",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        } else {
+            Toast.makeText(myDialogGames.getContext(), "Please, fill the gaps",
+                    Toast.LENGTH_LONG).show();
+        }
+
     }
 }
 
