@@ -8,17 +8,13 @@
     android:background="@drawable/game1_background">
 
     <ImageView
-        android:id="@+id/signalImageView"
-        android:layout_width="166dp"
-        android:layout_height="188dp"
-        android:layout_marginStart="122dp"
-        android:layout_marginLeft="122dp"
-        android:layout_marginTop="271dp"
-        android:layout_marginEnd="123dp"
-        android:layout_marginRight="123dp"
-        android:layout_marginBottom="272dp"
+        android:id="@+id/arrow"
+        android:layout_width="183dp"
+        android:layout_height="187dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titles_background" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
