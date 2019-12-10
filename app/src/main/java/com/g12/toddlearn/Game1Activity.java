@@ -9,6 +9,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.DateUtils;
@@ -40,6 +41,8 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
     private ChildsDB currentChild;
     private Timer timer;
 
+    private MediaPlayer songWell;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -50,7 +53,7 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(Game1Activity.this, accelerometer, 3000);
-
+        songWell = MediaPlayer.create(this,R.raw.good_sound);
 
         Log.d("Game1Activity","accelerometer created");
 
@@ -76,20 +79,20 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
             public void run() {
                 long finalTime = System.currentTimeMillis();
                 final long totalTime = startTime - finalTime;
-                /*DB.executeTransaction(new Realm.Transaction() {
+                DB.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
                         currentChild.setTimeGame2(totalTime);
 
                         realm.copyToRealmOrUpdate(currentChild);
                     }
-                });*/
+                });
                 Intent i = new Intent (Game1Activity.this, MainActivity.class);
                 i.putExtra("totalTimeGame1", totalTime);
                 startActivity(i);
                 finish();
             }
-        },/*currentUser.getMaxTime()*60000*/ 30000);
+        },currentUser.getMaxTime()*60000);
     }
 
 
@@ -113,6 +116,7 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
             Log.d("Game1Activity", "DERECHA");
             goBack = false;
             firstTime = false;
+            songWell.start();
         }
         if (xValue < 2 && xValue > -2 && goBack == false)
         {
