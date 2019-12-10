@@ -8,6 +8,7 @@
     android:background="@drawable/game_2_background">
 
     <RelativeLayout
+        android:id="@+id/layoutGame2"
         android:layout_width="400dp"
         android:layout_height="700dp"
         android:layout_marginLeft="5dp"

@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -37,7 +39,9 @@ public class Game2Activity extends AppCompatActivity {
             R.drawable.bear_yellow,
             R.drawable.tv_yellow,
     };
-
+    RelativeLayout gameZone;
+    ImageView[] objGame;
+    int contDone;
 
     Random r;
     @Override
@@ -47,23 +51,36 @@ public class Game2Activity extends AppCompatActivity {
 
         layoutDefinition();//connect the ImageView with the xml ImageViews
 
-        ImageView[] objGame={
+        objGame= new ImageView[]{
                 ImageObj1,
                 ImageObj2,
                 ImageObj3,
                 ImageObj4,
                 ImageObj5
         };
-
+        gameZone = (RelativeLayout) findViewById(R.id.layoutGame2);
+        contDone=0;
         r = new Random();
+        startGame();
+    }
+
+    private void startGame() {
+        contDone=0;
         imageGeneration(objGame);
         for(int i=0;i<5;i++){
             objGame[i].setOnTouchListener(touchListener);
         }
-
         ImageBoxBlue.setOnDragListener(dragListener);
         ImageBoxYellow.setOnDragListener(dragListener);
         ImageBoxRed.setOnDragListener(dragListener);
+
+        gameZone.setOnDragListener(dragListener);
+    }
+
+    private void checkStateGame(){
+        if(contDone>=5){
+            startGame();
+        }
     }
 
     View.OnTouchListener touchListener = new View.OnTouchListener() {
@@ -82,7 +99,11 @@ public class Game2Activity extends AppCompatActivity {
         public boolean onDrag(View v, DragEvent event) {
             int dragEvent = event.getAction();
             final View dragObject = (View) event.getLocalState();
+
             switch (dragEvent) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    dragObject.setVisibility(View.INVISIBLE);
+                    break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
@@ -90,17 +111,20 @@ public class Game2Activity extends AppCompatActivity {
                 case DragEvent.ACTION_DROP:
 
                     if((v.getId()==ImageBoxBlue.getId()) &&((int)dragObject.getTag()==0)){
-                        Toast.makeText(Game2Activity.this, "Correcto! Azul!", Toast.LENGTH_SHORT).show();
+                        dragObject.setVisibility(View.INVISIBLE);
+                        contDone++;
                     }else if((v.getId()==ImageBoxYellow.getId())&&((int)dragObject.getTag()==1)){
-                        Toast.makeText(Game2Activity.this, "Correcto! Amarillo!", Toast.LENGTH_SHORT).show();
+                        contDone++;
                     }else if((v.getId()==ImageBoxRed.getId())&&((int)dragObject.getTag()==2)){
-                        Toast.makeText(Game2Activity.this, "Correcto! Rojo!", Toast.LENGTH_SHORT).show();
+                        contDone++;
+                    }else{
+                        dragObject.setVisibility(View.VISIBLE);
                     }
 
                     break;
-                    case DragEvent.ACTION_DRAG_ENDED:
-                        dragObject.setVisibility(View.VISIBLE);
+
             }
+            checkStateGame();
             return true;
         }
     };
@@ -135,6 +159,7 @@ public class Game2Activity extends AppCompatActivity {
                     break;
             }
             objGame[i].setTag(auxRandom);
+            objGame[i].setVisibility(View.VISIBLE);
         }
     }
 }
