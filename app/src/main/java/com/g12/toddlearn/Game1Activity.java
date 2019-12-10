@@ -52,64 +52,27 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
                     Log.d("Game1Activity", "der");
                     image.setImageResource(R.drawable.signal_right);
                 }
-
-                try {
-                    this.wait(2000000000); // 2 second
-                boolean ok = false;
-                while (ok == false) {
-                    if (xValue > 5 && randomInt == 0) {
-                        image.setImageResource(R.drawable.bear_blue);
-                        ok = true;
-                    }
-                    if (xValue < -5 && randomInt == 1) {
-                        image.setImageResource(R.drawable.bear_blue);
-                        ok = true;
-                    }
+                Log.d("Game1Activity", "antes");
+                long time = System.currentTimeMillis();
+                while (time + 2000 >  System.currentTimeMillis()) {}
+                Log.d("Game1Activity", "despues");
+                if (xValue > 5 && randomInt == 0) {
+                    image.setImageResource(R.drawable.bear_blue);
                 }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                if (xValue < -5 && randomInt == 1) {
+                    image.setImageResource(R.drawable.bear_blue);
                 }
-                new Handler().postDelayed(this, 5000);
+                new Handler().postDelayed(this, 1000);
             }
-        }, 5000);
+        }, 0);
     }
     public void onAccuracyChanged(Sensor sensor, int i){
 
     }
     public void onSensorChanged(SensorEvent sensorEvent)
     {
-            xValue = sensorEvent.values[0];
-        Log.d("Game1Activity","onSensorChanged X:" + sensorEvent.values[0] + " Y: " + sensorEvent.values[1] + " Z: " + sensorEvent.values[2]);
-//        final Handler handler = new Handler();
-//        int updateInterval = 3000;
-//
-//        handler.postDelayed( new Runnable()
-//        {
-//
-//            boolean stop = false;
-//            Random randomGenerator = new Random();
-//            int randomInt = randomGenerator.nextInt(2);
-//
-//            public void stop() {
-//                this.stop = true;
-//            }
-//
-//            public void run()
-//            {
-//                Log.d("Game1Activity", "run");
-//                if (randomInt == 0) //izq
-//                {
-//                    image.setImageResource(R.drawable.signal_left);
-//                }
-//                if (randomInt == 1) //der
-//                {
-//                    image.setImageResource(R.drawable.signal_right);
-//                }
-//                // Any code which goes here will be executed every 'updateInterval'
-//                // change your background here
-//                //handler.postDelayed(this, 30000);
-//            }
-//        }, updateInterval);
+        xValue = sensorEvent.values[0];
+        //Log.d("Game1Activity","onSensorChanged X:" + sensorEvent.values[0] + " Y: " + sensorEvent.values[1] + " Z: " + sensorEvent.values[2]);
 
     }
 
