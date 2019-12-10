@@ -120,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
     public void enterGameSelection(View view) {
         email = myDialogGames.findViewById(R.id.email_input_login_games);
         password = myDialogGames.findViewById(R.id.password_input_login_games);
-
-
         if (!email.getText().toString().isEmpty() & !password.getText().toString().isEmpty()) {
             for (UsersDB u : userList) {
                 boolean checkEmail =  emailsEquals(u.getEmail(), email.getText().toString());
