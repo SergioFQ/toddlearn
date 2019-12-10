@@ -94,11 +94,16 @@ public class Game2Activity extends AppCompatActivity {
             @Override
             public void run() {
                 long finalTime = System.currentTimeMillis();
-                Intent i =
-                        new Intent (Game2Activity.this, MainActivity.class);
-                i.putExtra("startTimeGame2", startTime);
-                i.putExtra("finalTimeGame2", finalTime);
-                i.putExtra("userID", currentUser.getId());
+                final long totalTime = startTime - finalTime;
+                /*DB.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        currentChild.setTimeGame2(totalTime);
+
+                        realm.copyToRealmOrUpdate(currentChild);
+                    }
+                });*/
+                Intent i = new Intent (Game2Activity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }
