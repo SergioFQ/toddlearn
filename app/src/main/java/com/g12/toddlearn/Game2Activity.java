@@ -104,6 +104,7 @@ public class Game2Activity extends AppCompatActivity {
                     }
                 });*/
                 Intent i = new Intent (Game2Activity.this, MainActivity.class);
+                i.putExtra("totalTimeGame2", totalTime);
                 startActivity(i);
                 finish();
             }
