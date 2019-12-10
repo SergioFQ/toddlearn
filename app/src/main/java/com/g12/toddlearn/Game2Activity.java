@@ -102,7 +102,6 @@ public class Game2Activity extends AppCompatActivity {
 
             switch (dragEvent) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                    dragObject.setVisibility(View.INVISIBLE);
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
