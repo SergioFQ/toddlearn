@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1062921448831",
+    "firebase_url": "https://toddlearn-cf1ba.firebaseio.com",
+    "project_id": "toddlearn-cf1ba",
+    "storage_bucket": "toddlearn-cf1ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062921448831:android:dca6a55bc552ed3973fe4a",
+        "android_client_info": {
+          "package_name": "com.g12.toddlearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062921448831-cpr02jttibkn6qg4ovh9h5ebrn4r07kl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.g12.toddlearn",
+            "certificate_hash": "c3fb2b9b756d567974848e304abc5fcbc8543717"
+          }
+        },
+        {
+          "client_id": "1062921448831-u6jikdr1u2r2lc982dsafhbp87s5tr6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_vrXcsCHddZAcagTHIJvM6CY-F-Cx-zM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062921448831-u6jikdr1u2r2lc982dsafhbp87s5tr6a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

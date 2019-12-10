@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/password_input_login" />
 
     <Button
-        android:onClick="closePopUp"
+        android:onClick="closePopUpSettings"
         android:id="@+id/close_button"
         android:layout_width="24dp"
         android:layout_height="24dp"

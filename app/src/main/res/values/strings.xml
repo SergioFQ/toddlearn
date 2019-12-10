@@ -27,4 +27,5 @@
     <string name="login_arrow">➝</string>
     <string name="register_message_1">If you do not have account</string>
     <string name="register_message_2">press here</string>
+    <string name="title_game_popup">BEFORE START THE FUN... </string>
 </resources>

@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 
+
 import java.util.Random;
 
 public class Game1Activity extends AppCompatActivity implements SensorEventListener
@@ -90,6 +91,7 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
 //                //handler.postDelayed(this, 30000);
 //            }
 //        }, updateInterval);
+
     }
 
 }

@@ -99,10 +99,10 @@ public class Game2Activity extends AppCompatActivity {
         public boolean onDrag(View v, DragEvent event) {
             int dragEvent = event.getAction();
             final View dragObject = (View) event.getLocalState();
-
+            int tagAux=-1;
+            if(dragObject!=null){tagAux=(int)dragObject.getTag();}
             switch (dragEvent) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                    dragObject.setVisibility(View.INVISIBLE);
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
@@ -110,12 +110,12 @@ public class Game2Activity extends AppCompatActivity {
                     break;
                 case DragEvent.ACTION_DROP:
 
-                    if((v.getId()==ImageBoxBlue.getId()) &&((int)dragObject.getTag()==0)){
+                    if((v.getId()==ImageBoxBlue.getId()) &&(tagAux==0)){
                         dragObject.setVisibility(View.INVISIBLE);
                         contDone++;
-                    }else if((v.getId()==ImageBoxYellow.getId())&&((int)dragObject.getTag()==1)){
+                    }else if((v.getId()==ImageBoxYellow.getId())&&(tagAux==1)){
                         contDone++;
-                    }else if((v.getId()==ImageBoxRed.getId())&&((int)dragObject.getTag()==2)){
+                    }else if((v.getId()==ImageBoxRed.getId())&&(tagAux==2)){
                         contDone++;
                     }else{
                         dragObject.setVisibility(View.VISIBLE);
