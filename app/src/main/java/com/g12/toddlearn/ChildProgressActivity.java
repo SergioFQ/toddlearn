@@ -6,13 +6,18 @@ import io.realm.Realm;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
+import com.g12.toddlearn.app.ChildsDB;
 import com.g12.toddlearn.app.UsersDB;
+import com.github.mikephil.charting.charts.BarChart;
 
 public class ChildProgressActivity extends AppCompatActivity {
     private Realm DB;
     private UsersDB currentUser;
+    private ChildsDB currentChild;
+    private TextView childName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +27,18 @@ public class ChildProgressActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         long userID = extras.getLong("userID");
 
+        childName = findViewById(R.id.childNameTextView);
+        BarChart chartTotalTime = findViewById(R.id.barChar_playingTime);
+        BarChart chartGame1Time = findViewById(R.id.barChar_game1);
+        BarChart chartGame2Time = findViewById(R.id.barChar_game2);
+
 
         DB = Realm.getDefaultInstance();
 
         currentUser = DB.where(UsersDB.class).equalTo("id", userID).findFirst();
+        currentChild = currentUser.getChild();
+
+        childName.setText(currentChild.getName());
 
 
 
