@@ -29,33 +29,33 @@ public class Game2Activity extends AppCompatActivity {
     private UsersDB currentUser;
 
 
-    ImageView ImageObj1,ImageObj2,ImageObj3,ImageObj4,ImageObj5,ImageBoxBlue,ImageBoxYellow,ImageBoxRed,ImageTod;
+    private ImageView ImageObj1,ImageObj2,ImageObj3,ImageObj4,ImageObj5,ImageBoxBlue,ImageBoxYellow,ImageBoxRed,ImageTod;
 
-     Integer[] imagesBlue={
+     private Integer[] imagesBlue={
              R.drawable.ball_blue,
              R.drawable.car_blue,
              R.drawable.bear_blue,
              R.drawable.tv_blue,
      };
-    Integer[] imagesRed={
+    private Integer[] imagesRed={
             R.drawable.ball_red,
             R.drawable.car_red,
             R.drawable.bear_red,
             R.drawable.tv_red,
     };
-    Integer[] imagesYellow={
+    private Integer[] imagesYellow={
             R.drawable.ball_yellow,
             R.drawable.car_yellow,
             R.drawable.bear_yellow,
             R.drawable.tv_yellow,
     };
-    RelativeLayout gameZone;
-    ImageView[] objGame;
+    private RelativeLayout gameZone;
+    private ImageView[] objGame;
 
-    int contDone;
-    View objUsing;
-    Timer timer;
-    Random r;
+    private int contDone;
+    private View objUsing;
+    private Timer timer;
+    private Random r;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
