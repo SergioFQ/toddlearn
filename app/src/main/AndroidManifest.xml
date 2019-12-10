@@ -11,16 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Game2Activity" />
-        <activity android:name=".Game1Activity" />
-        <activity android:name=".NewPasswordActivity" />
-        <activity android:name=".DataChangeActivity" />
-        <activity android:name=".ChildProgressActivity" />
-        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".Game2Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Game1Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".NewPasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DataChangeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ChildProgressActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RegistrationActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".SettingMenuActivity" />
-        <activity android:name=".GameSelectionActivity" />
+        <activity android:name=".SettingMenuActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".GameSelectionActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity" >
+            android:screenOrientation="portrait"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
