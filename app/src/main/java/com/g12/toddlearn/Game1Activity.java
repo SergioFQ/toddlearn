@@ -96,6 +96,17 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
         },currentUser.getMaxTime()*60000);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        songWell.stop();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        songWell.stop();
+    }
 
     public void onAccuracyChanged(Sensor sensor, int i){
 
