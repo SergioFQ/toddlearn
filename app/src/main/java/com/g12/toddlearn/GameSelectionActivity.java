@@ -33,8 +33,10 @@ public class GameSelectionActivity extends AppCompatActivity {
     }
 
 
-    public void goToG1(View view) {
-        startActivity(new Intent(this, Game1Activity.class));
+    public void goToG1(View view){
+        Intent intent = new Intent(this, Game1Activity.class);
+        intent.putExtra("userID", currentUser.getId());
+        startActivity(intent);
     }
 
     public void goToG2(View view) {
