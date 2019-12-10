@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
+import android.os.Vibrator;
 
 
 import java.util.Random;
@@ -22,6 +23,10 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
     Sensor accelerometer;
     ImageView image;
     float xValue;
+    Vibrator v;
+    int randomInt;
+    boolean goBack = true;
+    Random randomGenerator = new Random();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -32,48 +37,49 @@ public class Game1Activity extends AppCompatActivity implements SensorEventListe
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(Game1Activity.this, accelerometer, 3000);
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+
         Log.d("Game1Activity","accelerometer created");
 
-        new Handler().postDelayed(new Runnable() {
-            boolean stop = false;
-            Random randomGenerator = new Random();
-            int randomInt = randomGenerator.nextInt(2);
-            public void run()
-            {
-                Log.d("Game1Activity", "run");
-                randomInt = randomGenerator.nextInt(2);
-                if (randomInt == 0) //izq
-                {
-                    Log.d("Game1Activity", "izq");
-                    image.setImageResource(R.drawable.signal_left);
-                }
-                if (randomInt == 1) //der
-                {
-                    Log.d("Game1Activity", "der");
-                    image.setImageResource(R.drawable.signal_right);
-                }
-                Log.d("Game1Activity", "antes");
-                long time = System.currentTimeMillis();
-                while (time + 2000 >  System.currentTimeMillis()) {}
-                Log.d("Game1Activity", "despues");
-                if (xValue > 5 && randomInt == 0) {
-                    image.setImageResource(R.drawable.bear_blue);
-                }
-                if (xValue < -5 && randomInt == 1) {
-                    image.setImageResource(R.drawable.bear_blue);
-                }
-                new Handler().postDelayed(this, 1000);
-            }
-        }, 0);
     }
     public void onAccuracyChanged(Sensor sensor, int i){
 
     }
     public void onSensorChanged(SensorEvent sensorEvent)
     {
-        xValue = sensorEvent.values[0];
         //Log.d("Game1Activity","onSensorChanged X:" + sensorEvent.values[0] + " Y: " + sensorEvent.values[1] + " Z: " + sensorEvent.values[2]);
-
+        xValue = sensorEvent.values[0];
+        if (xValue > 5 && randomInt == 0 && goBack == true)
+        {
+            image.setImageResource(R.drawable.bear_blue);
+            Log.d("Game1Activity", "IZQUIERDA");
+            v.vibrate(500);
+            goBack = false;
+        }
+        if (xValue < -5 && randomInt == 1 && goBack == true)
+        {
+            image.setImageResource(R.drawable.bear_blue);
+            Log.d("Game1Activity", "DERECHA");
+            v.vibrate(500);
+            goBack = false;
+        }
+        if (xValue < 2 && xValue > -2 && goBack == false)
+        {
+            randomInt = randomGenerator.nextInt(2);
+            if (randomInt == 0) //izq
+            {
+                Log.d("Game1Activity", "flecha izq");
+                image.setImageResource(R.drawable.signal_left);
+            }
+            if (randomInt == 1) //der
+            {
+                Log.d("Game1Activity", "flecha der");
+                image.setImageResource(R.drawable.signal_right);
+            }
+            xValue = sensorEvent.values[0];
+            goBack = true;
+        }
     }
 
 }
