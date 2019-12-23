@@ -113,7 +113,7 @@ public class Game2Activity extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        },30000);
+        },currentUser.getMaxTime()*60000);
     }
 
     private void startGame() {
